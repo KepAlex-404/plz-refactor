@@ -1,0 +1,35 @@
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+
+stages:
+  - test
+
+test:
+  stage: test
+  image: "python:3.11.3-slim-bullseye"
+  variables:
+    PIP_CACHE_DIR: ${CI_PROJECT_DIR}/.cache/pip
+  cache:
+    key: test
+    paths:
+      - ${PIP_CACHE_DIR}
+  before_script:
+    - pip install pytest
+  script:
+    - pytest main.py -vv
+
+type-check:
+  stage: test
+  image: "python:3.11.3-slim-bullseye"
+  variables:
+    PIP_CACHE_DIR: ${CI_PROJECT_DIR}/.cache/pip
+  cache:
+    key: test
+    paths:
+      - ${PIP_CACHE_DIR}
+  before_script:
+    - pip install pytest mypy
+  script:
+    - mypy main.py
