@@ -1,4 +1,4 @@
-# Please Refactor!
+# Please Fix!
 In [`main.py`](main.py), you will find some code that takes a list of transactions and share prices and prints out the resulting portfolio.
 
 It's terrible code.
@@ -9,9 +9,10 @@ We want you to make it more correct, readable and testable.
 
 Fork this repository, and make the changes you want to make. When you are done, open a merge/pull request from your fork to this repository. Please make your repository private and grant us permission to read your repository (`reporter` role in GitLab, `read` role in GitHub).
 
-There is no need to add any new files, it's fine to keep the tests in the same module as the code (for now!).
 
-Please spend ideally about 20 minutes making your improvements; we don't want or need a perfect solution, we'd love to see a rough draft of the most important changes after 20 minutes of your time.
+Please spend ideally about 20 minutes making your improvements; we don't want or need a perfect solution, we'd love to see a rough draft of the most important changes after 20 minutes of your time. The improvements should not be limited to refactoring, fix anything that you don't like.
+
+There is no need to add any new files, it's fine to keep the tests in the same module as the code (for now!).
 
 There is a small questionnaire in the `default` merge request template, please take a moment to fill that in.
 
