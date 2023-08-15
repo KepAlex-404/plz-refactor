@@ -1,18 +1,31 @@
+import json
+import logging
+import csv
+from typing import Iterator, Union
+
+
+def get_data(prices: str = 'prices.txt',
+             transactions: str = 'transactions.txt') -> Union[Iterator, dict]:
+    """
+    get data from our sources
+    """
+    with open(prices, 'r') as prices_file, \
+            open(transactions, 'r') as trans_file:
+        # Read the transactions
+        transactions = csv.reader(trans_file)
+        # Read the prices
+        prices = json.load(prices_file)
+    return prices, transactions
+
+
 def print_portfolio():
     """ Print the stocks in the portfolio and their values
     """
-    # Read the transactions
-    trans_file = open('transactions.txt')
-    transactions = []
-    for t in trans_file.readlines():
-        transactions.append(t.split(','))
-    
-    # Read the prices
-    prices = eval(open('prices.txt').read())
+    prices, transactions = get_data()
 
     # Calculate the value for each transaction
     total = 0
-    for i in range(len(transactions)):
+    for i in transactions:
         d, s, q = transactions[i]
         total += int(q) * prices[s]
         # print the stock, amount we hold, and the %-share of the total portfolio
