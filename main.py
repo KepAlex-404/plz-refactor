@@ -27,7 +27,7 @@ def print_portfolio():
 
 
 # This is for pytest
-def test_print_зortfolio(capsys):
+def test_print_portfolio(capsys):
     """ Test print_portfolio()
     """
     # Write some test data to the files to be read
