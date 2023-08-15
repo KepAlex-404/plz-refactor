@@ -5,7 +5,7 @@ from typing import Iterator, Union
 
 
 def get_data(prices: str = 'prices.txt',
-             transactions: str = 'transactions.txt') -> Union[Iterator, dict]:
+             transactions: str = 'transactions.txt') -> Union[dict, Iterator]:
     """
     get data from our sources
     """
