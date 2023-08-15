@@ -31,10 +31,10 @@ def print_portfolio():
     for transaction in transactions:
         _, stock, quantity = transaction
         total_position_price = prices[stock] * int(quantity)
-        print(f"{stock} - {total_position_price:.2f} - {total_position_price/total_sum*100:.1f}%")
+        print(f"{stock} - {total_position_price:.2f} - {total_position_price/total_sum*100:.2f}%")
 
     # Print the total amount
-    print(f"Total - {total_sum} - 100%")
+    print(f"Total - {total_sum:.2f} - 100.00%")
 
 
 # This is for pytest
@@ -58,8 +58,8 @@ def test_print_portfolio(capsys):
 
     # Compare the output to the printed output
     expected_output = (
-        "AAPL  1876.05 100.00%\n"
-        "Total 1876.05 100.00%\n"
+        "AAPL - 1876.05 - 100.00%\n"
+        "Total - 1876.05 - 100.00%\n"
         )
     assert printed_output == expected_output
 
