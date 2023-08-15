@@ -1,5 +1,4 @@
 import json
-import logging
 import csv
 from typing import Iterator, Union
 
@@ -32,7 +31,7 @@ def print_portfolio():
     for transaction in transactions:
         _, stock, quantity = transaction
         total_position_price = prices[stock] * int(quantity)
-        print(f"""{stock} - {total_position_price:.2f} - {total_position_price/total_sum*100:.1f}%""")
+        print(f"{stock} - {total_position_price:.2f} - {total_position_price/total_sum*100:.1f}%")
 
     # Print the total amount
     print(f"Total - {total_sum} - 100%")
