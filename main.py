@@ -12,31 +12,30 @@ def get_data(prices: str = 'prices.txt',
     with open(prices, 'r') as prices_file, \
             open(transactions, 'r') as trans_file:
         # Read the transactions
-        transactions = csv.reader(trans_file)
+        transactions = tuple(csv.reader(trans_file))
         # Read the prices
         prices = json.load(prices_file)
     return prices, transactions
 
 
 def print_portfolio():
-    """ Print the stocks in the portfolio and their values
     """
+    Print the stocks in the portfolio and their values
+    """
+    # Calculate the value for each transaction
+    # print the stock, amount we hold, and the %-share of the total portfolio
+
     prices, transactions = get_data()
 
-    # Calculate the value for each transaction
-    total = 0
-    for i in transactions:
-        d, s, q = transactions[i]
-        total += int(q) * prices[s]
-        # print the stock, amount we hold, and the %-share of the total portfolio
-        try:
-          print("%s  %.2f %.2f%%" % (s, prices[s] * int(q), prices[s] * int(q)/total * 100))
-        except:
-          pass
+    # calculate proper total prices of our portfolio
+    total_sum = sum(int(sublist[2]) * prices[sublist[1]] for sublist in transactions)
+    for transaction in transactions:
+        _, stock, quantity = transaction
+        total_position_price = prices[stock] * int(quantity)
+        print(f"""{stock} - {total_position_price:.2f} - {total_position_price/total_sum*100:.1f}%""")
 
     # Print the total amount
-    print("Total %.2f 100.00%%" % total)
-    return
+    print(f"Total - {total_sum} - 100%")
 
 
 # This is for pytest
