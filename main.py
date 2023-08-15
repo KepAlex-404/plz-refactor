@@ -1,4 +1,4 @@
-def printPortfolio():
+def print_portfolio():
     """ Print the stocks in the portfolio and their values
     """
     # Read the transactions
@@ -27,8 +27,8 @@ def printPortfolio():
 
 
 # This is for pytest
-def test_printPortfolio(capsys):
-    """ Test printPortfolio()
+def test_print_зortfolio(capsys):
+    """ Test print_portfolio()
     """
     # Write some test data to the files to be read
     with open('transactions.txt', "w") as f:
@@ -40,7 +40,7 @@ def test_printPortfolio(capsys):
         f.write('{"AAPL": 125.07}\n')
 
     # Print the portfolio
-    printPortfolio()
+    print_portfolio()
 
     # Collect the output
     printed_output = capsys.readouterr().out
@@ -54,4 +54,4 @@ def test_printPortfolio(capsys):
 
 
 if __name__ == '__main__':
-    printPortfolio()
+    print_portfolio()
